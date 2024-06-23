@@ -8,7 +8,7 @@ canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
 const drawingsList = DrawingsList;
-const player = new Player(200, 200, "red", "square", drawingsList)
+const player = new Player(350, 350, "purple", "square", drawingsList)
 const animator = new Animator(drawingsList, context);
 
 animator.startAnimationsLoop()

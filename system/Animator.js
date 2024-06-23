@@ -4,15 +4,15 @@ class Animator {
         this.context = context;
     }
 
-    startAnimationsLoop() {
-        setInterval(() => {
-            this.context.clearRect(0, 0, window.innerWidth, window.innerHeight)
-            this.drawingsList.forEach(drawingSettings => {
-                this.createDrawing(drawingSettings)
-            });
-        }, 1000);
+    startAnimationsLoop = () => {
+        this.context.clearRect(0, 0, window.innerWidth, window.innerHeight)
+        const drawingArray = Object.values(this.drawingsList)
+        drawingArray.forEach(drawingSettings => {
+            this.createDrawing(drawingSettings)
+        });
+        requestAnimationFrame(this.startAnimationsLoop)
     }
-    createDrawing(drawingSettings) {      
+    createDrawing(drawingSettings) {
         switch (drawingSettings.drawingType) {
             case "arc":
                 this.createCircle(drawingSettings)
@@ -27,10 +27,9 @@ class Animator {
     }
     createCircle() { }
     createSquare(drawingSettings) {
-        console.log(drawingSettings)
-        const { color, xpos, ypos} = drawingSettings;
+        const { color, xpos, ypos } = drawingSettings;
         this.context.fillStyle = color;
-        this.context.fillRect(xpos, ypos, 10, 10);
+        this.context.fillRect(xpos, ypos, 30, 30);
     }
 }
 

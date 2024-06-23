@@ -1,2 +1,2 @@
-const DrawingsList = []
+const DrawingsList = {};
 export default DrawingsList;
