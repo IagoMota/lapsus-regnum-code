@@ -6,15 +6,20 @@ class Player extends Square {
         this.xpos = xpos;
         this.ypos = ypos;
         this.color = color;
+        this.speed = 6;
         this.drawingType = drawingType;
         this.listForDrawing()
         this.activateControls()
     }
+    height = 30;
+    width = 30;
     listForDrawing() {
         this.drawingsList.player = {
             xpos: this.xpos,
             ypos: this.ypos,
             color: this.color,
+            height: 30,
+            width: 30,
             drawingType: this.drawingType
         }
     }
@@ -48,7 +53,7 @@ class Player extends Square {
                         }
                         pressedIntervals.d = setInterval(() => {
                             if (keepGoing.d) {
-                                this.xpos += 4;
+                                this.xpos += this.speed;
                                 this.listForDrawing()
                             }
                         }, 16)
@@ -62,7 +67,7 @@ class Player extends Square {
                         }
                         pressedIntervals.a = setInterval(() => {
                             if (keepGoing.a) {
-                                this.xpos -= 4;
+                                this.xpos -= this.speed;
                                 this.listForDrawing()
                             }
                         }, 16)
@@ -77,7 +82,7 @@ class Player extends Square {
                         }
                         pressedIntervals.w = setInterval(() => {
                             if (keepGoing.w) {
-                                this.ypos -= 4;
+                                this.ypos -= this.speed;
                                 this.listForDrawing()
                             }
                         }, 16)
@@ -91,7 +96,7 @@ class Player extends Square {
                         }
                         pressedIntervals.s = setInterval(() => {
                             if (keepGoing.s) {
-                                this.ypos += 4;
+                                this.ypos += this.speed;
                                 this.listForDrawing()
                             }
                         }, 16)

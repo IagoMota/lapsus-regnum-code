@@ -1,11 +1,13 @@
 class Animator {
-    constructor(drawingsList, context) {
+    constructor(drawingsList, context, detectCollisions) {
         this.drawingsList = drawingsList;
         this.context = context;
+        this.detectCollisions = detectCollisions;
     }
 
     startAnimationsLoop = () => {
         this.context.clearRect(0, 0, window.innerWidth, window.innerHeight)
+        this.detectCollisions()
         const drawingArray = Object.values(this.drawingsList)
         drawingArray.forEach(drawingSettings => {
             this.createDrawing(drawingSettings)
@@ -27,9 +29,9 @@ class Animator {
     }
     createCircle() { }
     createSquare(drawingSettings) {
-        const { color, xpos, ypos } = drawingSettings;
+        const { color, xpos, ypos, width, height } = drawingSettings;
         this.context.fillStyle = color;
-        this.context.fillRect(xpos, ypos, 30, 30);
+        this.context.fillRect(xpos, ypos, width, height);
     }
 }
 
