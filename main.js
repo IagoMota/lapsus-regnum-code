@@ -11,12 +11,12 @@ canvas.height = window.innerHeight;
 
 const drawingsList = DrawingsList;
 const collisions = new Collisions(drawingsList);
-const animator = new Animator(drawingsList, context, collisions.detectCollisions);
+const animator = new Animator(drawingsList, context, collisions);
 
 const player = new Player(10, 10, "purple", "square", drawingsList)
 
-for (let i = 0; i < 100; i++) {
-    new Goblin(Math.floor(Math.random() * (window.innerWidth - 30)), Math.floor(Math.random() * (window.innerHeight - 30)), "green", "square", drawingsList)
+for (let i = 0; i < 20; i++) {
+    new Goblin(Math.floor(Math.random() * (window.innerWidth - 50)), Math.floor(Math.random() * (window.innerHeight - 200)), "green", "square", drawingsList, i)
 }
 
 animator.startAnimationsLoop()

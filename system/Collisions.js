@@ -3,11 +3,11 @@ class Collisions {
         this.drawingsList = drawingsList;
     }
 
-    detectCollisions() {
+    getCollisions() {
         const playerPos ={ ...this.drawingsList.player };
 
         const drawingsArray = Object.entries(this.drawingsList);
-        const collisionsFiltered = drawingsArray.filter((keyValue) => {
+        const collisionsList = drawingsArray.filter((keyValue) => {
             const [key, value] = keyValue;
             if (key !== "player") {               
                 return playerPos.xpos < value.xpos + 30 &&
@@ -16,9 +16,7 @@ class Collisions {
                    playerPos.ypos + 30 > value.ypos;
             }
         })
-        collisionsFiltered.forEach(collision =>{
-            delete this.drawingsList[collision[0]]
-        })
+        return collisionsList;
     }
 }
 

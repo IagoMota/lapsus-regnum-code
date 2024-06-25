@@ -1,7 +1,5 @@
-import Square from "./Square.js";
-class Player extends Square {
+class Player {
     constructor(xpos, ypos, color, drawingType, drawingsList) {
-        super()
         this.drawingsList = drawingsList;
         this.xpos = xpos;
         this.ypos = ypos;
