@@ -1,6 +1,6 @@
 class Animator {
-    constructor(drawingsList, context, collisions) {
-        this.drawingsList = drawingsList;
+    constructor(spritesList, context, collisions) {
+        this.spritesList = spritesList;
         this.context = context;
         this.collisions = collisions;
     }
@@ -8,7 +8,7 @@ class Animator {
     startAnimationsLoop = () => {
         this.context.clearRect(0, 0, window.innerWidth, window.innerHeight)
         console.log(this.collisions.getCollisions())
-        const drawingArray = Object.values(this.drawingsList)
+        const drawingArray = Object.values(this.spritesList)
         drawingArray.forEach(drawingSettings => {
             this.createDrawing(drawingSettings)
         });

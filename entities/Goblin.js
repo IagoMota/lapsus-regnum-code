@@ -1,20 +1,20 @@
 import HpBar from "./dependencies/HpBar.js"
 
 class Goblin {
-    constructor(xpos, ypos, color, drawingType, drawingsList, name) {
-        this.drawingsList = drawingsList;
+    constructor(xpos, ypos, color, drawingType, spritesList, name) {
+        this.spritesList = spritesList;
         this.xpos = xpos;
         this.ypos = ypos;
         this.color = color;
         this.drawingType = drawingType;
-        this.hpBar = new HpBar(10, this.xpos, this.ypos, this.drawingsList);
+        this.hpBar = new HpBar(10, this.xpos, this.ypos);
         this.listForDrawing()
         this.hpBar.listForDrawing()
     }
     height = 30;
     width = 30;
     listForDrawing() {
-        this.drawingsList[`goblin${name++}`] = {
+        this.spritesList[`goblin${name++}`] = {
             xpos: this.xpos,
             ypos: this.ypos,
             color: this.color,

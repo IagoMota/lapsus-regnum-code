@@ -1,12 +1,12 @@
 class Collisions {
-    constructor(drawingsList) {
-        this.drawingsList = drawingsList;
+    constructor(spritesList) {
+        this.spritesList = spritesList;
     }
 
     getCollisions() {
-        const playerPos ={ ...this.drawingsList.player };
+        const playerPos ={ ...this.spritesList.player };
 
-        const drawingsArray = Object.entries(this.drawingsList);
+        const drawingsArray = Object.entries(this.spritesList);
         const collisionsList = drawingsArray.filter((keyValue) => {
             const [key, value] = keyValue;
             if (key !== "player") {               

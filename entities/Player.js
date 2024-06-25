@@ -1,6 +1,6 @@
 class Player {
-    constructor(xpos, ypos, color, drawingType, drawingsList) {
-        this.drawingsList = drawingsList;
+    constructor(xpos, ypos, color, drawingType, spritesList) {
+        this.spritesList = spritesList;
         this.xpos = xpos;
         this.ypos = ypos;
         this.color = color;
@@ -12,7 +12,7 @@ class Player {
     height = 30;
     width = 30;
     listForDrawing() {
-        this.drawingsList.player = {
+        this.spritesList.player = {
             xpos: this.xpos,
             ypos: this.ypos,
             color: this.color,

@@ -1,6 +1,6 @@
 let hpBarCounter = 0;
 class HpBar {
-    constructor(hitPoints, xpos, ypos, drawingsList){
+    constructor(hitPoints, xpos, ypos, hpList){
         this.hitPoints = hitPoints;
         this.xpos = xpos;
         this.ypos = ypos - 14;
@@ -8,10 +8,10 @@ class HpBar {
         this.width = 30;
         this.color = "white";
         this.drawingType = "square"
-        this.drawingsList = drawingsList;
+        this.hpList = hpList;
     }
     listForDrawing() {
-        this.drawingsList[`hpBar${hpBarCounter++}`] = {
+        this.hpList[`hpBar${hpBarCounter++}`] = {
             xpos: this.xpos,
             ypos: this.ypos,
             color: this.color,
