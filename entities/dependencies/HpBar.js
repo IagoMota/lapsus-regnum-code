@@ -1,17 +1,20 @@
-let hpBarCounter = 0;
+import HpList from "../../system/globalObjects/HpList.js";
+
+
 class HpBar {
-    constructor(hitPoints, xpos, ypos, hpList){
+    constructor(name, hitPoints, xpos, ypos){
+        this.name = name;
         this.hitPoints = hitPoints;
         this.xpos = xpos;
         this.ypos = ypos - 14;
         this.height = 10;
         this.width = 30;
-        this.color = "white";
+        this.color = "red";
         this.drawingType = "square"
-        this.hpList = hpList;
+        this.listForDrawing()
     }
     listForDrawing() {
-        this.hpList[`hpBar${hpBarCounter++}`] = {
+        HpList[this.name] = {
             xpos: this.xpos,
             ypos: this.ypos,
             color: this.color,

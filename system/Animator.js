@@ -1,15 +1,18 @@
+import SpritesList from "./globalObjects/SpritesList.js";
+import HpList from "./globalObjects/HpList.js";
+import Collider from "./Collider.js";
+
 class Animator {
-    constructor(spritesList, context, collisions) {
-        this.spritesList = spritesList;
+    constructor(context) {
         this.context = context;
-        this.collisions = collisions;
+        this.collider = new Collider();
     }
 
     startAnimationsLoop = () => {
         this.context.clearRect(0, 0, window.innerWidth, window.innerHeight)
-        console.log(this.collisions.getCollisions())
-        const drawingArray = Object.values(this.spritesList)
-        drawingArray.forEach(drawingSettings => {
+        console.log(this.collider.getCollisions())
+        const drawingsArray = [...Object.values(SpritesList), ...Object.values(HpList)]
+        drawingsArray.forEach((drawingSettings, index) => {
             this.createDrawing(drawingSettings)
         });
         requestAnimationFrame(this.startAnimationsLoop)
@@ -33,6 +36,7 @@ class Animator {
         this.context.fillStyle = color;
         this.context.fillRect(xpos, ypos, width, height);
     }
+
 }
 
 export default Animator;

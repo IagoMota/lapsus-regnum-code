@@ -1,25 +1,13 @@
+import HpBar from "./dependencies/HpBar.js"
+import Stats from "./dependencies/Stats.js"
+import Sprite from "./dependencies/Sprite.js"
+
 class Player {
-    constructor(xpos, ypos, color, drawingType, spritesList) {
-        this.spritesList = spritesList;
-        this.xpos = xpos;
-        this.ypos = ypos;
-        this.color = color;
-        this.speed = 6;
-        this.drawingType = drawingType;
-        this.listForDrawing()
+    constructor(name = "player", height = 30, width = 30, xpos = 100, ypos = 100) {
+        this.stats = new Stats(name, 10, 3, 3, 4)
+        this.hpBar = new HpBar(name, this.stats.health, xpos, ypos);
+        this.sprite = new Sprite(name, null, "square", "red", 30, 30, xpos, ypos);
         this.activateControls()
-    }
-    height = 30;
-    width = 30;
-    listForDrawing() {
-        this.spritesList.player = {
-            xpos: this.xpos,
-            ypos: this.ypos,
-            color: this.color,
-            height: 30,
-            width: 30,
-            drawingType: this.drawingType
-        }
     }
     activateControls() {
         const keepGoing = {
@@ -51,8 +39,10 @@ class Player {
                         }
                         pressedIntervals.d = setInterval(() => {
                             if (keepGoing.d) {
-                                this.xpos += this.speed;
-                                this.listForDrawing()
+                                this.sprite.xpos += this.stats.speed;
+                                this.hpBar.xpos += this.stats.speed;
+                                this.hpBar.listForDrawing()
+                                this.sprite.listForDrawing()
                             }
                         }, 16)
                     }
@@ -65,8 +55,10 @@ class Player {
                         }
                         pressedIntervals.a = setInterval(() => {
                             if (keepGoing.a) {
-                                this.xpos -= this.speed;
-                                this.listForDrawing()
+                                this.sprite.xpos -= this.stats.speed;
+                                this.hpBar.xpos -= this.stats.speed;
+                                this.hpBar.listForDrawing()
+                                this.sprite.listForDrawing()
                             }
                         }, 16)
                     }
@@ -80,8 +72,10 @@ class Player {
                         }
                         pressedIntervals.w = setInterval(() => {
                             if (keepGoing.w) {
-                                this.ypos -= this.speed;
-                                this.listForDrawing()
+                                this.sprite.ypos -= this.stats.speed;
+                                this.hpBar.ypos -= this.stats.speed;
+                                this.hpBar.listForDrawing()
+                                this.sprite.listForDrawing()
                             }
                         }, 16)
                     }
@@ -94,8 +88,10 @@ class Player {
                         }
                         pressedIntervals.s = setInterval(() => {
                             if (keepGoing.s) {
-                                this.ypos += this.speed;
-                                this.listForDrawing()
+                                this.sprite.ypos += this.stats.speed;
+                                this.hpBar.ypos += this.stats.speed;
+                                this.hpBar.listForDrawing()
+                                this.sprite.listForDrawing()
                             }
                         }, 16)
                     }
@@ -140,7 +136,6 @@ class Player {
             }
         })
     }
-
 }
 
 export default Player;

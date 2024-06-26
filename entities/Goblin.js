@@ -1,27 +1,13 @@
-import HpBar from "./dependencies/HpBar.js"
+import HpBar from "./dependencies/HpBar.js";
+import Sprite from "./dependencies/Sprite.js";
+import Stats from "./dependencies/Stats.js";
+import random from "../system/testing/Random.js";
 
 class Goblin {
-    constructor(xpos, ypos, color, drawingType, spritesList, name) {
-        this.spritesList = spritesList;
-        this.xpos = xpos;
-        this.ypos = ypos;
-        this.color = color;
-        this.drawingType = drawingType;
-        this.hpBar = new HpBar(10, this.xpos, this.ypos);
-        this.listForDrawing()
-        this.hpBar.listForDrawing()
-    }
-    height = 30;
-    width = 30;
-    listForDrawing() {
-        this.spritesList[`goblin${name++}`] = {
-            xpos: this.xpos,
-            ypos: this.ypos,
-            color: this.color,
-            height: 30,
-            width: 30,
-            drawingType: this.drawingType
-        }
+    constructor(name = "goblin", height = 30, width = 30, xpos = random.X(30), ypos = random.Y(30)) {
+        this.stats = new Stats(name, 10, 3, 3)
+        this.hpBar = new HpBar(name, this.stats.health, xpos, ypos);
+        this.sprite = new Sprite(name, null, "square", "green", 30, 30, xpos, ypos);
     }
 }
 
